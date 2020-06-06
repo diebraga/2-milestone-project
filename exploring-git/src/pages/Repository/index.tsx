@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const Main: React.FC = () => {
+const Repository: React.FC = () => {
   return (
     <>
       <Container>
@@ -12,4 +12,4 @@ const Main: React.FC = () => {
   );
 };
 
-export default Main;
+export default Repository;
