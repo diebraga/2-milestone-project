@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { shade } from 'polished';
 
 export default createGlobalStyle`
   * {
@@ -9,7 +10,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #1C1D1D;
+    background: ${shade(0.2, '#232129')};
     -webkit-font-smoothing: antialiased;
 
     img {
