@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-import gitlogo from '../assets/logo.svg';
-
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -11,8 +9,11 @@ export default createGlobalStyle`
   }
 
   body {
-    background: url(${gitlogo}) no-repeat 70% top;
+    background: #1C1D1D;
     -webkit-font-smoothing: antialiased;
+
+    img {
+    }
   }
 
   body, input, button {
