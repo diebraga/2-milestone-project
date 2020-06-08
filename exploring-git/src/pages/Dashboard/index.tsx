@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FaGithub } from 'react-icons/fa';
 import { FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
 import api from '../../services/api';
 
 import { Container, Repositories } from './styles';
@@ -11,9 +12,19 @@ import Input from '../../_components/input';
 import Button from '../../_components/button';
 
 const Dashboard: React.FC = () => {
-  function handleSubmit(data: []): void {
-    console.log(data);
-  }
+  const handleSubmit = useCallback(async (data: []) => {
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string().required('required'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: true,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
   return (
     <>
       <Container>
