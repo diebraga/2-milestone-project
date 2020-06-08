@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { shade } from 'polished';
 
+import background from '../assets/background.jpg';
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -10,7 +12,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${shade(0.2, '#232129')};
+    background: ${shade(0.2, '#232129')} url(${background}) no-repeat center;
+    background-size: cover;
     -webkit-font-smoothing: antialiased;
 
     img {

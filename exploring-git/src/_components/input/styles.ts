@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProops {
+  isFocused: boolean;
+}
+export const Container = styled.div<ContainerProops>`
   background: #232129;
   border-radius: 5px;
   width: 100%;
@@ -14,6 +17,13 @@ export const Container = styled.div`
   & + div {
     margin-top: 8px;
   }
+
+  ${proops =>
+    proops.isFocused &&
+    css`
+      color: tomato;
+      border-color: tomato;
+    `}
 
   input {
     flex: 1;

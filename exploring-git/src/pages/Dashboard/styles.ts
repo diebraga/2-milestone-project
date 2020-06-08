@@ -36,7 +36,7 @@ export const Repositories = styled.div`
   max-width: 700px;
 
   a {
-    background: #232129;
+    background: rgba(0, 0, 0, 0.4);
     border-radius: 5px;
     width: 100%;
     padding: 24px;

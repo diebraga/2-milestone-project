@@ -22,7 +22,7 @@ const Dashboard: React.FC = () => {
         <strong>Exploring_Git</strong>
         <h1>Explore repositories on Github</h1>
         <Form onSubmit={handleSubmit}>
-          <Input name="repository" placeholder="Repository name" />
+          <Input name="name" placeholder="Repository name" />
           <Button type="submit">Submit</Button>
         </Form>
       </Container>

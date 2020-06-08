@@ -1,4 +1,10 @@
-import React, { InputHTMLAttributes, useEffect, useRef } from 'react';
+import React, {
+  InputHTMLAttributes,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from 'react';
 import { useField } from '@unform/core';
 
 import { Container } from './styles';
@@ -8,8 +14,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<InputProps> = ({ name, ...rest }) => {
-  const inputRef = useRef(null);
+  const [isFocused, setIsFocused] = useState(false);
   const { fieldName, registerField } = useField(name);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleInputBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
 
   useEffect(() => {
     registerField({
@@ -20,8 +31,13 @@ const Input: React.FC<InputProps> = ({ name, ...rest }) => {
   }, [fieldName, registerField]);
   return (
     <>
-      <Container>
-        <input ref={inputRef} {...rest} />
+      <Container isFocused={isFocused}>
+        <input
+          onBlur={handleInputBlur}
+          onFocus={() => setIsFocused(true)}
+          ref={inputRef}
+          {...rest}
+        />
       </Container>
     </>
   );
