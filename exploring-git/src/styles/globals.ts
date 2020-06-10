@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { shade } from 'polished';
 
-import background from '../_assets/sky2.jpg';
+import GitBackground from '../assets/sky.jpg';
 
 export default createGlobalStyle`
   * {
@@ -12,26 +11,22 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${shade(0.2, '#232129')} url(${background}) no-repeat center;
-    background-size: cover;
+    background: #F0F0F5 url(${GitBackground}) no-repeat 70% top;
     -webkit-font-smoothing: antialiased;
-
-    img {
-    }
   }
 
   body, input, button {
-    font: 16px Roboto, sans-serif;
-  }
-
-  button {
-    cursor: pointer;
+    font: 16px sans-serif;
   }
 
   #root {
     max-width: 960px;
     margin: 0 auto;
     padding: 40px 20px;
+  }
+
+  button {
+    cursor: pointer;
   }
 `;
 

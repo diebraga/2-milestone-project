@@ -1,10 +1,9 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
-import api from '../../services/api';
+import api from '../services/api';
 
 import { Title, Form, Repositories, Error } from './styles';
-import Button from '../../_components/button';
 
 interface Repository {
   full_name: string;
@@ -61,7 +60,7 @@ const Dashboard: React.FC = () => {
           onChange={e => setNewRepo(e.target.value)}
           placeholder="Search repository"
         />
-        <Button type="submit">Submit</Button>
+        <button type="submit">Submit</button>
       </Form>
 
       {inputError && <Error>{inputError}</Error>}

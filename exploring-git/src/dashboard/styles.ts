@@ -7,7 +7,7 @@ interface FormProps {
 
 export const Title = styled.h1`
   font-size: 45px;
-  color: #fff;
+  color: #3a3a3a;
   max-width: 450px;
   line-height: 56px;
 
@@ -44,9 +44,16 @@ export const Form = styled.form<FormProps>`
   button {
     margin-left: 10px;
     width: 210px;
+    background: #3b9eff;
     height: 70px;
+    border-radius: 5px;
+    border: 0;
     font-weight: bold;
     color: #fff;
+
+    &:hover {
+      background: ${shade(0.2, '#3b9eff')};
+    }
   }
 `;
 

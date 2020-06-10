@@ -5,8 +5,3 @@ const api = axios.create({
 });
 
 export default api;
-
-/**
- *
- *  github api export to...
- */
