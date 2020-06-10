@@ -1,66 +1,89 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
-import { FaGithub } from 'react-icons/fa';
-import { FiChevronRight } from 'react-icons/fi';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
-import getValidationErrors from '../../_utils/getValidErrors';
+import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 
-import { Container, Repositories } from './styles';
-
-import Input from '../../_components/input';
+import { Title, Form, Repositories, Error } from './styles';
 import Button from '../../_components/button';
 
+interface Repository {
+  full_name: string;
+  description: string;
+  owner: {
+    login: string;
+    avatar_url: string;
+  };
+}
+
 const Dashboard: React.FC = () => {
-  const formRef = useRef<FormHandles>(null);
+  const [newRepo, setNewRepo] = useState('');
+  const [inputError, setInputError] = useState('');
+  const [repos, setRepos] = useState<Repository[]>(() => {
+    const storagedRepos = localStorage.getItem('@GithubExplorer:repositories');
 
-  const handleSubmit = useCallback(async (data: []) => {
-    try {
-      formRef.current?.setErrors({});
-
-      const schema = Yup.object().shape({
-        name: Yup.string().required('required'),
-      });
-      console.log(data);
-
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-    } catch (err) {
-      console.log(err);
-
-      const errors = getValidationErrors(err);
-
-      formRef.current?.setErrors(errors);
+    if (storagedRepos) {
+      return JSON.parse(storagedRepos);
     }
-  }, []);
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('@GithubExplorer:repositories', JSON.stringify(repos));
+  }, [repos]);
+
+  async function handleRepos(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
+
+    if (!newRepo) {
+      setInputError('Input Ex: "author/repository"');
+      return;
+    }
+
+    try {
+      const response = await api.get(`repos/${newRepo}`);
+
+      const repository = response.data;
+
+      setRepos([...repos, repository]);
+      setNewRepo('');
+      setInputError('');
+    } catch (err) {
+      setInputError('Author or repository invalid!');
+    }
+  }
   return (
     <>
-      <Container>
-        <FaGithub size={100} />
-        &nbsp;
-        <strong>Exploring_Git</strong>
-        <h1>Explore repositories on Github</h1>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <Input name="name" placeholder="Repository name" />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Container>
+      <Title>Explore Github Repositories</Title>
+
+      <Form hasError={!!inputError} onSubmit={handleRepos}>
+        <input
+          value={newRepo}
+          onChange={e => setNewRepo(e.target.value)}
+          placeholder="Search repository"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+
+      {inputError && <Error>{inputError}</Error>}
 
       <Repositories>
-        <Link to="/">
-          <img
-            src="https://avatars2.githubusercontent.com/u/52054459?s=460&u=d4c512846e9d96d98c2da4eeb1c9906691461b80&v=4"
-            alt="Diego"
-          />
-          <div>
-            <strong>diebraga</strong>
-            <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-          </div>
-          <FiChevronRight size={20} />
-        </Link>
+        {repos.map(repository => (
+          <Link
+            key={repository.full_name}
+            to={`/repositories/${repository.full_name}`}
+          >
+            <img
+              src={repository.owner.avatar_url}
+              alt={repository.owner.login}
+            />
+            <div>
+              <strong>{repository.full_name}</strong>
+              <p>{repository.description}</p>
+            </div>
+
+            <FiChevronRight size={20} />
+          </Link>
+        ))}
       </Repositories>
     </>
   );

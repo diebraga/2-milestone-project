@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { shade } from 'polished';
 
-import background from '../_assets/background.jpg';
+import background from '../_assets/sky2.jpg';
 
 export default createGlobalStyle`
   * {

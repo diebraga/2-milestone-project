@@ -1,34 +1,59 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { shade } from 'polished';
 
-export const Container = styled.div`
-  h1 {
-    font-size: 48px;
+interface FormProps {
+  hasError: boolean;
+}
+
+export const Title = styled.h1`
+  font-size: 45px;
+  color: #fff;
+  max-width: 450px;
+  line-height: 56px;
+
+  margin-top: 80px;
+`;
+
+export const Form = styled.form<FormProps>`
+  margin-top: 40px;
+  max-width: 700px;
+
+  display: flex;
+
+  input {
+    flex: 1;
+    height: 70px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 5px;
+    color: #3a3a3a;
+
+    border: 2px solid #fff;
+
+    ${props =>
+      props.hasError &&
+      css`
+        border-color: #c53030;
+      `}
+
+    &::placeholder {
+      color: #a8a8b3;
+    }
+  }
+
+  button {
+    margin-left: 10px;
+    width: 210px;
+    height: 70px;
+    font-weight: bold;
     color: #fff;
-    max-width: 450px;
-    line-height: 56px;
-
-    margin-top: 80px;
   }
+`;
 
-  form {
-    margin-top: 40px;
-    max-width: 700px;
-    display: flex;
-
-    input {
-      flex: 1;
-      height: 70px;
-      padding: 0 24px;
-      border: 0;
-    }
-
-    button {
-      width: 210px;
-      height: 70px;
-      font-weight: bold;
-      margin-left: 10px;
-    }
-  }
+export const Error = styled.span`
+  color: #c53030;
+  display: block;
+  margin-top: 8px;
 `;
 
 export const Repositories = styled.div`
@@ -36,23 +61,28 @@ export const Repositories = styled.div`
   max-width: 700px;
 
   a {
-    background: rgba(0, 0, 0, 0.4);
+    background: #fff;
     border-radius: 5px;
     width: 100%;
     padding: 24px;
     display: block;
     text-decoration: none;
 
-    display: flex;
     align-items: center;
-    transition: transform 0.4s;
+    display: flex;
+    transition: transform 2s;
+
+    & + a {
+      margin-top: 16px;
+    }
 
     &:hover {
       transform: translateX(10px);
     }
 
-    & + a {
-      margin-top: 16px;
+    svg {
+      margin-left: auto;
+      color: #a8a8b3;
     }
 
     img {
@@ -62,16 +92,19 @@ export const Repositories = styled.div`
     }
 
     div {
-      color: #666360;
-      margin-left: 16px;
+      margin: 0 16px;
+      flex: 1;
 
       strong {
         font-size: 20px;
+        color: #3d3d4d;
       }
-    }
 
-    svg {
-      margin-left: auto;
+      p {
+        font-size: 18px;
+        margin-top: 4px;
+        color: #a8a8b3;
+      }
     }
   }
 `;
