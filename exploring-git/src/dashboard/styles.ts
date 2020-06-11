@@ -7,7 +7,7 @@ interface FormProps {
 
 export const Title = styled.h1`
   font-size: 45px;
-  color: #3a3a3a;
+  color: #fff;
   max-width: 450px;
   line-height: 56px;
 
@@ -21,12 +21,13 @@ export const Form = styled.form<FormProps>`
   display: flex;
 
   input {
+    background: rgba(0, 0, 0, 0.6);
     flex: 1;
     height: 70px;
     padding: 0 24px;
     border: 0;
     border-radius: 5px;
-    color: #3a3a3a;
+    color: #fff;
 
     border: 2px solid #fff;
 
@@ -68,7 +69,7 @@ export const Repositories = styled.div`
   max-width: 700px;
 
   a {
-    background: #fff;
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     width: 100%;
     padding: 24px;
@@ -89,7 +90,7 @@ export const Repositories = styled.div`
 
     svg {
       margin-left: auto;
-      color: #a8a8b3;
+      color: #fff;
     }
 
     img {
@@ -104,7 +105,7 @@ export const Repositories = styled.div`
 
       strong {
         font-size: 20px;
-        color: #3d3d4d;
+        color: #fff;
       }
 
       p {

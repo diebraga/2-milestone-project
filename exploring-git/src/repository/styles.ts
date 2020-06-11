@@ -1,12 +1,14 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Issues = styled.div`
   margin-top: 80px;
 
   a {
-    background: #fff;
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     width: 100%;
+
     padding: 24px;
     display: block;
     text-decoration: none;
@@ -34,7 +36,7 @@ export const Issues = styled.div`
 
       strong {
         font-size: 20px;
-        color: #3d3d4d;
+        color: #fff;
       }
 
       p {
@@ -55,11 +57,11 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #a8a8b3;
+    color: #fff;
     transition: color 0.2s;
 
     &:hover {
-      color: #666;
+      color: ${shade(0.2, '#fff')};
     }
 
     svg {
@@ -87,13 +89,13 @@ export const RepoInfo = styled.section`
 
     strong {
       font-size: 36px;
-      color: #3d3d4d;
+      color: #fff;
     }
 
     p {
       margin-top: 4px;
       font-size: 18px;
-      color: #737380;
+      color: ${shade(0.2, '#fff')};
     }
   }
 
@@ -110,13 +112,13 @@ export const RepoInfo = styled.section`
         display: block;
         font-size: 36px;
 
-        color: #3d3d4d;
+        color: #fff;
       }
 
       span {
         display: block;
         margin-top: 4px;
-        color: #6c6c80;
+        color: ${shade(0.2, '#fff')};
       }
     }
   }
