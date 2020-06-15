@@ -3,6 +3,7 @@ import { shade } from 'polished';
 
 interface FormProps {
   hasError: boolean;
+  isFocused: boolean;
 }
 
 export const Title = styled.h1`
@@ -29,13 +30,20 @@ export const Form = styled.form<FormProps>`
     border-radius: 5px;
     color: #fff;
 
-    border: 2px solid #fff;
+    border: 2.5px solid transparent;
 
     ${props =>
       props.hasError &&
       css`
         border-color: #c53030;
       `}
+
+    ${props =>
+      props.isFocused &&
+      css`
+        border-color: tomato;
+      `}
+
 
     &::placeholder {
       color: #a8a8b3;

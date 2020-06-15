@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../services/api';
@@ -15,7 +15,9 @@ interface Repository {
 }
 
 const Dashboard: React.FC = () => {
+  const inputRef = useRef(null);
   const [newRepo, setNewRepo] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
   const [inputError, setInputError] = useState('');
   const [repos, setRepos] = useState<Repository[]>(() => {
     const storagedRepos = localStorage.getItem('@GithubExplorer:repositories');
@@ -54,11 +56,18 @@ const Dashboard: React.FC = () => {
     <>
       <Title>Explore Github Repositories</Title>
 
-      <Form hasError={!!inputError} onSubmit={handleRepos}>
+      <Form
+        isFocused={isFocused}
+        hasError={!!inputError}
+        onSubmit={handleRepos}
+      >
         <input
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           value={newRepo}
           onChange={e => setNewRepo(e.target.value)}
           placeholder="Search repository"
+          ref={inputRef}
         />
         <button type="submit">Submit</button>
       </Form>
