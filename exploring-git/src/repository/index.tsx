@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { GoTelescope } from 'react-icons/go';
 import api from '../services/api';
 import { Header, RepoInfo, Issues } from './styles';
 
@@ -48,6 +49,8 @@ export const Repository: React.FC = () => {
   return (
     <>
       <Header>
+        <GoTelescope size={50} />
+        <h1>Git_Finder</h1>
         <Link to="/">
           <FiChevronLeft size={20} />
           Back

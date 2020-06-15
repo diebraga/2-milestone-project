@@ -1,9 +1,10 @@
 import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { GoTelescope } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../services/api';
 
-import { Title, Form, Repositories, Error } from './styles';
+import { Title, Form, Repositories, Error, Header } from './styles';
 
 interface Repository {
   full_name: string;
@@ -54,6 +55,11 @@ const Dashboard: React.FC = () => {
   }
   return (
     <>
+      <Header>
+        <GoTelescope size={50} />
+        <h1>Git_Finder</h1>
+      </Header>
+
       <Title>Explore Github Repositories</Title>
 
       <Form

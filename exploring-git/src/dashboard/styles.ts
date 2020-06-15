@@ -124,3 +124,23 @@ export const Repositories = styled.div`
     }
   }
 `;
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    margin-right: auto;
+
+    align-self: center;
+    color: #fff;
+    font-size: 18px;
+  }
+
+  svg {
+    margin-left: 30px;
+    margin-right: 2px;
+    color: #fff;
+  }
+`;
