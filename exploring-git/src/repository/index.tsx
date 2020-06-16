@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { GoTelescope } from 'react-icons/go';
+import { wait } from '@testing-library/react';
 import api from '../services/api';
-import { Header, RepoInfo, Issues } from './styles';
+import { Header, RepoInfo, Issues, Loading } from './styles';
 
 interface RepositoryParams {
   repository: string;
@@ -58,7 +59,7 @@ export const Repository: React.FC = () => {
         </Link>
       </Header>
 
-      {repo && (
+      {repo ? (
         <RepoInfo>
           <header>
             <img src={repo.owner.avatar_url} alt={repo.owner.login} />
@@ -85,6 +86,10 @@ export const Repository: React.FC = () => {
             </li>
           </ul>
         </RepoInfo>
+      ) : (
+        <Loading>
+          <p>Loading...</p>
+        </Loading>
       )}
       <Issues>
         {issue.map(issue => (

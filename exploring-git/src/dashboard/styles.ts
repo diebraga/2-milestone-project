@@ -53,7 +53,7 @@ export const Form = styled.form<FormProps>`
   button {
     margin-left: 10px;
     width: 210px;
-    background: #3b9eff;
+    background: #006381;
     height: 70px;
     border-radius: 5px;
     border: 0;
@@ -61,15 +61,16 @@ export const Form = styled.form<FormProps>`
     color: #fff;
 
     &:hover {
-      background: ${shade(0.2, '#3b9eff')};
+      background: ${shade(0.2, '#006381')};
     }
   }
 `;
 
 export const Error = styled.span`
-  color: #c53030;
+  color: #fff;
   display: block;
   margin-top: 8px;
+  font-size: 20px;
 `;
 
 export const Repositories = styled.div`

@@ -27,7 +27,7 @@ export const Issues = styled.div`
 
     svg {
       margin-left: auto;
-      color: #a8a8b3;
+      color: #fff;
     }
 
     div {
@@ -82,6 +82,12 @@ export const Header = styled.header`
       margin-right: 4px;
     }
   }
+`;
+
+export const Loading = styled.section`
+  color: #fff;
+  font-size: 40px;
+  align-content: center;
 `;
 
 export const RepoInfo = styled.section`

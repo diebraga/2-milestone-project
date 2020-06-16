@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
     event.preventDefault();
 
     if (!newRepo) {
-      setInputError('Input Ex: "author/repository"');
+      setInputError('Invalid! input a repository');
       return;
     }
 
@@ -72,10 +72,10 @@ const Dashboard: React.FC = () => {
           onBlur={() => setIsFocused(false)}
           value={newRepo}
           onChange={e => setNewRepo(e.target.value)}
-          placeholder="Search repository"
+          placeholder="<User name> / <Repository name>"
           ref={inputRef}
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Search</button>
       </Form>
 
       {inputError && <Error>{inputError}</Error>}
