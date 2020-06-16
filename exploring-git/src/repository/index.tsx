@@ -15,6 +15,7 @@ interface Repository {
   stargazers_count: number;
   forks_count: number;
   open_issues_count: number;
+  language: string;
   owner: {
     login: string;
     avatar_url: string;
@@ -78,6 +79,9 @@ export const Repository: React.FC = () => {
             <li>
               <strong>{repo.open_issues_count}</strong>
               <span>issues</span>
+            </li>
+            <li>
+              <h2>{repo.language}</h2>
             </li>
           </ul>
         </RepoInfo>

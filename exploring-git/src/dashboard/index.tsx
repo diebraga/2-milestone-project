@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
     }
 
     try {
-      const response = await api.get(`repos/${newRepo}`);
+      const response = await api.get<Repository>(`repos/${newRepo}`);
 
       const repository = response.data;
 

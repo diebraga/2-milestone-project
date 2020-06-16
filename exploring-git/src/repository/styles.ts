@@ -119,6 +119,10 @@ export const RepoInfo = styled.section`
     display: flex;
 
     li {
+      h2 {
+        font-size: 30px;
+        color: ${shade(0.2, '#fff')};
+      }
       & + li {
         margin-left: 70px;
       }
