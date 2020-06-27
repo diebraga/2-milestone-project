@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { GoTelescope } from 'react-icons/go';
-import { wait } from '@testing-library/react';
-import api from '../services/api';
+import api from '../../services/api';
 import { Header, RepoInfo, Issues, Loading } from './styles';
 
 interface RepositoryParams {

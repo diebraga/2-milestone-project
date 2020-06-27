@@ -2,7 +2,7 @@ import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { GoTelescope } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
-import api from '../services/api';
+import api from '../../services/api';
 
 import { Title, Form, Repositories, Error, Header } from './styles';
 

@@ -26,6 +26,12 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/pages/**/*.tsx",
+      "src/pages/**/*.tsx"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
