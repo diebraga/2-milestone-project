@@ -4,12 +4,13 @@ import React, {
   useEffect,
   useRef,
   useContext,
+  useCallback,
 } from 'react';
 import { Link } from 'react-router-dom';
 import { GoTelescope } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
-import contexAddRepo from '../../context/contextAddRepo';
+import { RepoContext } from '../../context/contextAddRepo';
 
 import { Title, Form, Repositories, Error, Header } from './styles';
 
@@ -28,9 +29,7 @@ const Dashboard: React.FC = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputError, setInputError] = useState('');
 
-  const repo = useContext(contexAddRepo);
-
-  console.log(repo);
+  const { repoAdd } = useContext(RepoContext);
 
   const [repos, setRepos] = useState<Repository[]>(() => {
     const storagedRepos = localStorage.getItem('@GithubExplorer:repositories');
@@ -45,26 +44,35 @@ const Dashboard: React.FC = () => {
     localStorage.setItem('@GithubExplorer:repositories', JSON.stringify(repos));
   }, [repos]);
 
-  async function handleRepos(event: FormEvent<HTMLFormElement>): Promise<void> {
-    event.preventDefault();
+  const handleRepos = useCallback(
+    async (event: FormEvent<HTMLFormElement>, data: Repository) => {
+      event.preventDefault();
 
-    if (!newRepo) {
-      setInputError('Invalid! input a repository');
-      return;
-    }
+      if (!newRepo) {
+        setInputError('Invalid! input a repository');
+        return;
+      }
 
-    try {
-      const response = await api.get<Repository>(`repos/${newRepo}`);
+      try {
+        const response = await api.get<Repository>(`repos/${newRepo}`);
 
-      const repository = response.data;
+        const repository = response.data;
 
-      setRepos([...repos, repository]);
-      setNewRepo('');
-      setInputError('');
-    } catch (err) {
-      setInputError('Author or repository invalid!');
-    }
-  }
+        setRepos([...repos, repository]);
+        setNewRepo('');
+        setInputError('');
+
+        repoAdd({
+          full_name: data.full_name,
+          description: data.description,
+          owner: data.owner,
+        });
+      } catch (err) {
+        setInputError('Author or repository invalid!');
+      }
+    },
+    [repos, setRepos, newRepo, repoAdd],
+  );
 
   return (
     <>
