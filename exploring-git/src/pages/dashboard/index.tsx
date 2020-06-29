@@ -1,8 +1,15 @@
-import React, { useState, FormEvent, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  FormEvent,
+  useEffect,
+  useRef,
+  useContext,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { GoTelescope } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
+import contexAddRepo from '../../context/contextAddRepo';
 
 import { Title, Form, Repositories, Error, Header } from './styles';
 
@@ -20,6 +27,11 @@ const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [inputError, setInputError] = useState('');
+
+  const repo = useContext(contexAddRepo);
+
+  console.log(repo);
+
   const [repos, setRepos] = useState<Repository[]>(() => {
     const storagedRepos = localStorage.getItem('@GithubExplorer:repositories');
 
@@ -53,15 +65,14 @@ const Dashboard: React.FC = () => {
       setInputError('Author or repository invalid!');
     }
   }
+
   return (
     <>
       <Header>
         <GoTelescope size={50} />
         <h1>Git_Finder</h1>
       </Header>
-
       <Title>Explore Github Repositories</Title>
-
       <Form
         isFocused={isFocused}
         hasError={!!inputError}
@@ -77,9 +88,7 @@ const Dashboard: React.FC = () => {
         />
         <button type="submit">Search</button>
       </Form>
-
       {inputError && <Error>{inputError}</Error>}
-
       <Repositories>
         {repos.map(repository => (
           <Link
