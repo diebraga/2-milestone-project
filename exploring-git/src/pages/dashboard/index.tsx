@@ -10,9 +10,15 @@ import { Link } from 'react-router-dom';
 import { GoTelescope } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
-import { RepoContext } from '../../context/contextAddRepo';
+import { RepoContext } from '../../_context/contextAddRepo';
 
-import { Title, Form, Repositories, Error, Header } from './styles';
+import {
+  Title,
+  Form,
+  Repositories,
+  Error,
+  Header,
+} from '../../_styles_css/dashboard/styles';
 
 interface Repository {
   full_name: string;

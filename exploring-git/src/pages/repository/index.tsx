@@ -3,7 +3,12 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { GoTelescope } from 'react-icons/go';
 import api from '../../services/api';
-import { Header, RepoInfo, Issues, Loading } from './styles';
+import {
+  Header,
+  RepoInfo,
+  Issues,
+  Loading,
+} from '../../_styles_css/repository/styles';
 
 interface RepositoryParams {
   repository: string;
