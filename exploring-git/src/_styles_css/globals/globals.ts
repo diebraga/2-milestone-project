@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import GitBackground from '../_assets/sky.jpg';
+import GitBackground from '../../_assets/sky.jpg';
 
 export default createGlobalStyle`
   * {

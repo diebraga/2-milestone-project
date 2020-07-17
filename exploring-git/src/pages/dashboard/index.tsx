@@ -1,16 +1,8 @@
-import React, {
-  useState,
-  FormEvent,
-  useEffect,
-  useRef,
-  useContext,
-  useCallback,
-} from 'react';
+import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { GoTelescope } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
-import { RepoContext } from '../../_context/contextAddRepo';
 
 import {
   Title,
@@ -34,9 +26,6 @@ const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [inputError, setInputError] = useState('');
-
-  const { repoAdd } = useContext(RepoContext);
-
   const [repos, setRepos] = useState<Repository[]>(() => {
     const storagedRepos = localStorage.getItem('@GithubExplorer:repositories');
 
@@ -50,43 +39,35 @@ const Dashboard: React.FC = () => {
     localStorage.setItem('@GithubExplorer:repositories', JSON.stringify(repos));
   }, [repos]);
 
-  const handleRepos = useCallback(
-    async (event: FormEvent<HTMLFormElement>, data: Repository) => {
-      event.preventDefault();
+  async function handleRepos(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
 
-      if (!newRepo) {
-        setInputError('Invalid! input a repository');
-        return;
-      }
+    if (!newRepo) {
+      setInputError('Invalid! input a repository');
+      return;
+    }
 
-      try {
-        const response = await api.get<Repository>(`repos/${newRepo}`);
+    try {
+      const response = await api.get<Repository>(`repos/${newRepo}`);
 
-        const repository = response.data;
+      const repository = response.data;
 
-        setRepos([...repos, repository]);
-        setNewRepo('');
-        setInputError('');
-
-        repoAdd({
-          full_name: data.full_name,
-          description: data.description,
-          owner: data.owner,
-        });
-      } catch (err) {
-        setInputError('Author or repository invalid!');
-      }
-    },
-    [repos, setRepos, newRepo, repoAdd],
-  );
-
+      setRepos([...repos, repository]);
+      setNewRepo('');
+      setInputError('');
+    } catch (err) {
+      setInputError('Author or repository invalid!');
+    }
+  }
   return (
     <>
       <Header>
         <GoTelescope size={50} />
         <h1>Git_Finder</h1>
       </Header>
+
       <Title>Explore Github Repositories</Title>
+
       <Form
         isFocused={isFocused}
         hasError={!!inputError}
@@ -102,8 +83,10 @@ const Dashboard: React.FC = () => {
         />
         <button type="submit">Search</button>
       </Form>
+
       {inputError && <Error>{inputError}</Error>}
-      <Repositories>
+
+      <Repositories data-testid="repoAdd">
         {repos.map(repository => (
           <Link
             key={repository.full_name}

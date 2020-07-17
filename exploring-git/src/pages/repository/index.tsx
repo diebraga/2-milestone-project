@@ -64,7 +64,7 @@ export const Repository: React.FC = () => {
       </Header>
 
       {repo ? (
-        <RepoInfo>
+        <RepoInfo data-testid="repoInfo">
           <header>
             <img src={repo.owner.avatar_url} alt={repo.owner.login} />
             <div>
