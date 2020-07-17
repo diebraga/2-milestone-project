@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Issues = styled.div`
-  margin-top: 80px;
+  margin-top: 40px;
 
   a {
     background: rgba(0, 0, 0, 0.6);

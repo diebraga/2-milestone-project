@@ -13,6 +13,13 @@ export default createGlobalStyle`
   body {
     background: #F0F0F5 url(${GitBackground}) 70% top;
     -webkit-font-smoothing: antialiased;
+    h2 {
+      font-size: 26px;
+      color: #fff;
+      margin-top: 40px;
+      margin-left: 30px;
+    }
+
   }
 
   body, input, button {

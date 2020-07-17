@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { FiChevronRight, FiChevronLeft, FiStar } from 'react-icons/fi';
 import { GoTelescope } from 'react-icons/go';
 import api from '../../services/api';
 import {
@@ -92,6 +92,12 @@ export const Repository: React.FC = () => {
           <p>Loading...</p>
         </Loading>
       )}
+      <h2>
+        <FiStar />
+        &nbsp;
+        {repo?.language}
+      </h2>
+
       <Issues>
         {issue.map(issue => (
           <a key={issue.id} href={issue.html_url} target="blank">
