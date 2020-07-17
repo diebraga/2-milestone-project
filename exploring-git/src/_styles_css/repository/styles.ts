@@ -92,6 +92,7 @@ export const Loading = styled.section`
 
 export const RepoInfo = styled.section`
   margin-top: 80px;
+  max-width: 300px;
 
   header {
     display: flex;
@@ -134,7 +135,7 @@ export const RepoInfo = styled.section`
       }
       strong {
         display: block;
-        font-size: 36px;
+        font-size: 30px;
 
         color: #fff;
       }

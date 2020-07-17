@@ -85,9 +85,6 @@ export const Repository: React.FC = () => {
               <strong>{repo.open_issues_count}</strong>
               <span>issues</span>
             </li>
-            <li>
-              <h2>{repo.language}</h2>
-            </li>
           </ul>
         </RepoInfo>
       ) : (
@@ -97,7 +94,7 @@ export const Repository: React.FC = () => {
       )}
       <Issues>
         {issue.map(issue => (
-          <a key={issue.id} href={issue.html_url}>
+          <a key={issue.id} href={issue.html_url} target="blank">
             <div>
               <strong>{issue.title}</strong>
               <p>{issue.user.login}</p>
