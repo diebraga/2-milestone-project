@@ -29,6 +29,10 @@ Following the link:
 
 https://www.figma.com/file/Hfvqx2xRxkxi8AeOBlzdPS/Untitled?node-id=0%3A1
 
+app view: 
+
+<img src="assets/1.png" width="250" height="350"/> <img src="assets/2.png" width="250" height="350"/>
+
 ## Features
 
 - Dashboard page "/" You can search for repositories through git hub
