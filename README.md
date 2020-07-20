@@ -27,6 +27,8 @@ and listing their Issues.
 
 Following the link:
 
+https://www.figma.com/file/Hfvqx2xRxkxi8AeOBlzdPS/Untitled?node-id=0%3A1
+
 ## Features
 
 - Dashboard page "/" You can search for repositories through git hub
@@ -175,7 +177,9 @@ Under `exploring-git/package.json` you gonna find all dependencies in the projec
  
 ## Deployment
   
-  The website is running deployed on Netlify:
+  The website is running deployed on Netlify: 
+  
+  https://github-finder-code.netlify.app/
   
 ## Get Started.
 
