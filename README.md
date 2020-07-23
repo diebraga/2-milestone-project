@@ -203,8 +203,6 @@ Under `exploring-git/package.json` you gonna find all dependencies in the projec
   https://www.pexels.com/
   
 ### User Experience
-
-  <img src="assets/3.jpg" width="150" height="250"/>  
   
   Sarah O'Shea
   
@@ -224,6 +222,9 @@ Under `exploring-git/package.json` you gonna find all dependencies in the projec
   things easier, it's great that there is always new 
   technologies and the new generations are interested
   in it.
+  
+  <img src="assets/3.jpg" width="150" height="250"/>  
+
 
 ### Acknowledgements
 
