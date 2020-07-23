@@ -202,6 +202,28 @@ Under `exploring-git/package.json` you gonna find all dependencies in the projec
 - The photos used in this site were obtained from:
   https://www.pexels.com/
   
+### User Experience
+
+  <img src="assets/3.png" width="150" height="250"/>  
+  
+  Sarah O'Shea
+  
+  The app is very beautiful, the colors, 
+  animations and effects it looks very professional.
+  I wish I were able to build those web applications
+  too.
+  
+  <img src="assets/4.png" width="150" height="250"/>  
+  
+  Rafael Braga
+  
+  I'm a develope too and it's impressed my brother's 
+  code quality. the app itself it's very good, fluid, beaultiful
+  and simple and it works well for the purpose.
+  He is always teaching me different ways to make 
+  things easier, it's great that there is always new 
+  technologies and the new generations are interested
+  in it.
 
 ### Acknowledgements
 
