@@ -204,7 +204,7 @@ Under `exploring-git/package.json` you gonna find all dependencies in the projec
   
 ### User Experience
 
-  <img src="assets/3.png" width="150" height="250"/>  
+  <img src="assets/3.jpg" width="150" height="250"/>  
   
   Sarah O'Shea
   
@@ -213,7 +213,7 @@ Under `exploring-git/package.json` you gonna find all dependencies in the projec
   I wish I were able to build those web applications
   too.
   
-  <img src="assets/4.png" width="150" height="250"/>  
+  <img src="assets/4.jpg" width="150" height="250"/>  
   
   Rafael Braga
   
